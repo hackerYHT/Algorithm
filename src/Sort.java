@@ -27,9 +27,8 @@ public class Sort {
     private static void merge(int[] arr, int p, int q, int r){
         int[] tmp = new int[r - p + 1];
         int left = p, right = q + 1, i = 0;
-        while(left <= q && right <= r){
+        while(left <= q && right <= r)
             tmp[i++] = arr[left] < arr[right] ? arr[left++] : arr[right++];
-        }
         while(left <= q) tmp[i++] = arr[left++];
         while(right <= r) tmp[i++] = arr[right++];
         i = 0;
