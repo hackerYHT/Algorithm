@@ -1,7 +1,21 @@
+/*
+ * @Descripttion: 排序算法 
+ * @version: 
+ * @Author: yht
+ * @Date: 2022-04-17 20:57:57
+ * @LastEditors: yht
+ * @LastEditTime: 2022-04-21 05:15:56
+ */
 package src;
 
 public class Sort {
-    //插入排序
+    /**
+     * @name: 插入排序 
+     * @test: test font
+     * @msg: 算法时间复杂度O(n²) 
+     * @param {int[]} arr
+     * @return {*}
+     */
     public static void insertSort(int[] arr){
         for(int i = 1; i < arr.length; i++){
             int key = arr[i];
@@ -12,11 +26,17 @@ public class Sort {
         }
     }
 
-    //归并排序
+    /**
+     * @name: 归并排序 
+     * @test: test font
+     * @msg: 算法时间复杂度O(nlog2n)
+     * @param {int[]} arr
+     * @return {*}
+     */
     public static void mergeSort(int[] arr){
         Sort.ms(arr, 0, arr.length-1);
     }
-    public static void ms(int[] arr, int p, int r){
+    private static void ms(int[] arr, int p, int r){
         if(r > p) {
             int q = (p + r) / 2;
             ms(arr, p, q);
