@@ -6,7 +6,7 @@ package src;
  * @Author: yht
  * @Date: 2022-04-17 20:57:57
  * @LastEditors: yht
- * @LastEditTime: 2022-04-25 22:35:24
+ * @LastEditTime: 2022-04-27 09:58:44
  */
 public class Sort {
     /**
@@ -85,6 +85,31 @@ public class Sort {
     private static void swap(int[] arr, int x, int y) {
         int tmp = arr[x];
         arr[x] = arr[y];
-        arr[x] = tmp;
+        arr[y] = tmp;
+    }
+    /**
+     * @name: 快速排序
+     * @test: test font
+     * @msg: 
+     * @param {int[]} arr
+     * @return {*}
+     */
+    public static void quickSort(int[] arr) {
+        qc(arr, 0, arr.length-1);
+    }
+    private static void qc(int[] arr, int p, int r) {
+        if(p >= r) return;  //base case;
+        int q = partition(arr, p, r);
+        qc(arr, p, q-1);
+        qc(arr, q+1, r);
+    }
+    private static int partition(int[] arr, int p, int r) {
+        int i = p-1, x = arr[r];
+        for (int j = p; j < r; j++) 
+            if(arr[j] <= x) {
+                swap(arr, ++i, j);
+            }
+        swap(arr, i + 1, r);
+        return i + 1;
     }
 }
