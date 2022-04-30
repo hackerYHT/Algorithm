@@ -5,7 +5,7 @@ package src;
  * @Author: yht
  * @Date: 2022-04-17 20:57:57
  * @LastEditors: yht
- * @LastEditTime: 2022-04-30 09:34:17
+ * @LastEditTime: 2022-04-30 13:54:40
  */
 public class Sort {
     /**
@@ -134,6 +134,26 @@ public class Sort {
         swap(arr, x, r);
         return partition(arr, p, r);
     }
-
+    /**
+     * @name:计数排序 
+     * @test: test font
+     * @msg: O(n)稳定，牺牲空间复杂度，以空间换时间:w
+     * @param {int[]} arr
+     * @return {*}
+     */
+    public static int[] countingSort(int[] arr) {
+        int max = 1 << 32;
+        int[] res = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) 
+            max = arr[i] > max ? arr[i] : max; 
+        int[] tmp = new int[max+1];
+        for (int i = 0; i < arr.length; i++) 
+            tmp[arr[i]]++;
+        for (int i = 1; i < tmp.length; i++) 
+            tmp[i] += tmp[i-1];
+        for (int i = 0; i < arr.length; i++) 
+            res[--tmp[arr[i]]] = arr[i];
+        return res;
+    }
     
 }
