@@ -1,12 +1,11 @@
 package src;
-
 /*
  * @Descripttion: 排序算法 
  * @version: 
  * @Author: yht
  * @Date: 2022-04-17 20:57:57
  * @LastEditors: yht
- * @LastEditTime: 2022-04-27 09:58:44
+ * @LastEditTime: 2022-04-30 09:34:17
  */
 public class Sort {
     /**
@@ -29,7 +28,7 @@ public class Sort {
     /**
      * @name: 归并排序 
      * @test: test font
-     * @msg: 算法时间复杂度O(nlog2n)
+     * @msg: 算法时间复杂度O(nlgn)
      * @param {int[]} arr
      * @return {*}
      */
@@ -57,7 +56,7 @@ public class Sort {
     /**
      * @name:堆排序 
      * @test: test font
-     * @msg: 大顶堆
+     * @msg: 大顶堆   算法时间复杂度 O(nlgn)
      * @param {int[]} arr
      * @return {*}
      */
@@ -90,18 +89,18 @@ public class Sort {
     /**
      * @name: 快速排序
      * @test: test font
-     * @msg: 
+     * @msg:算法时间复杂度   最坏O(n2),最好O(nlgn),平均O(nlgn) 
      * @param {int[]} arr
      * @return {*}
      */
     public static void quickSort(int[] arr) {
-        qc(arr, 0, arr.length-1);
+        qs(arr, 0, arr.length-1);
     }
-    private static void qc(int[] arr, int p, int r) {
+    private static void qs(int[] arr, int p, int r) {
         if(p >= r) return;  //base case;
         int q = partition(arr, p, r);
-        qc(arr, p, q-1);
-        qc(arr, q+1, r);
+        qs(arr, p, q-1);
+        qs(arr, q+1, r);
     }
     private static int partition(int[] arr, int p, int r) {
         int i = p-1, x = arr[r];
@@ -112,4 +111,29 @@ public class Sort {
         swap(arr, i + 1, r);
         return i + 1;
     }
+    /**
+     * @name:快速排序(随机版 )
+     * @test: test font
+     * @msg:算法时间复杂度  O(nlgn) 
+     * @param {int[]} arr
+     * @return {*}
+     */
+    public static void quickRdmSort(int[] arr) {
+        qrs(arr, 0, arr.length-1);
+    }
+
+    private static void qrs(int[] arr, int p, int r) {
+        if(p >= r) return;  //base case;
+        int q = rdmPartition(arr, p, r);
+        qrs(arr, p, q-1);
+        qrs(arr, q+1, r);
+    }
+
+    private static int rdmPartition(int[] arr, int p, int r) {
+        int x = (int)(Math.random() * (r - p + 1)) + p; //生成[p, r]之间的随机数
+        swap(arr, x, r);
+        return partition(arr, p, r);
+    }
+
+    
 }
