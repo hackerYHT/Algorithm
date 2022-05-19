@@ -152,9 +152,9 @@ public class RBT<K extends Comparable<K>, V> {
                 uncle = grandpa.right;
                 //父节点和叔叔节点为红色
                 if(uncle != null && isRed(uncle)){
-                    parent,color = BLACK;
+                    parent.color = BLACK;
                     uncle.color = BLACK;
-                    grandpa = RED;
+                    grandpa.color = RED;
                     balance(grandpa);
                     return;
                 }
